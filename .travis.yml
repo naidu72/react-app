@@ -1,0 +1,9 @@
+sudo: required
+
+services:
+  - docker
+
+berfore_install:
+   - docker build -t temptest -f Dockerfile.dev .
+scripts:
+  - docker run temptest npm run test -- -- coverage 
