@@ -1,0 +1,26 @@
+version: '3'
+services:
+  my_react:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+    ports:
+      - "3000:3000"
+  ############################# for react test
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm",  "run", "test"]
+  ############################# for react builing
+  #builds:
+  #  build: .
+  #  ports:
+  #    - "8080:80"
